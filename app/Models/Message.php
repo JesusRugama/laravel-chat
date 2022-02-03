@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\MessageCreated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -24,5 +25,14 @@ class Message extends Model
     protected $fillable = [
         'username',
         'message',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => MessageCreated::class,
     ];
 }

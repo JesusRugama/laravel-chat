@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Chat;
 
+use App\Events\MessageCreated;
 use App\Models\Message;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
@@ -25,7 +26,7 @@ class Messages extends Component
      */
     protected $listeners = [
         'messageCreated' => 'loadMessages',
-        'echo:messages,messageCreated' => 'loadMessages',
+        'echo:chatroom,MessageCreated' => 'loadMessages',
     ];
 
     public function render(): View
